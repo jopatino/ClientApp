@@ -33,7 +33,7 @@
                             <Label Text="Clientes Importantes"
                                    TextColor="DarkBlue">
                             </Label>
-                            <Label Text="Clientes que no valen la pena"
+                            <Label Text="Clientes que no valen la pena :v"
                                    TextColor="Purple">
                             </Label>
                         </StackLayout>
