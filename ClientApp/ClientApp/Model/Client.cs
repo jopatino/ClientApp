@@ -1,4 +1,5 @@
 ﻿using ClientApp.ViewModel;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,6 +9,7 @@ namespace ClientApp.Model
     public class Client:Notificable
     {
         #region Atributos
+        [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
         private string nombre;
         private string telefono;
