@@ -3,7 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ClientApp"
              x:Class="ClientApp.View.MainPage">
-
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="+">
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
     <StackLayout>
         <ListView Header="Contactos"
                   Footer="Copyright, Todos los derechos reservados"
@@ -58,8 +61,7 @@
             </ListView.ItemTemplate>
             <ListView.FooterTemplate>
                 <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal"
+                    <StackLayout Orientation="Horizontal"
                                      HorizontalOptions="Center">
                             <Label Text="Texto 1"
                                    TextColor="DarkBlue">
@@ -68,7 +70,6 @@
                                    TextColor="Purple">
                             </Label>
                         </StackLayout>
-                    </ViewCell>
                 </DataTemplate>
             </ListView.FooterTemplate>
         </ListView>

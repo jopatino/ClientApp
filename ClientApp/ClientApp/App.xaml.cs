@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClientApp.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ namespace ClientApp
 		{
 			InitializeComponent();
 
-			MainPage = new ClientApp.MainPage();
+            MainPage = new NavigationPage(new MainPage());
 		}
 
 		protected override void OnStart ()

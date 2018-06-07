@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClientApp.ViewModel.ClientPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Nombre"></Label>
+            <Entry Placeholder="Ingrese Nombre"></Entry>
+            <Label Text="Teléfono"></Label>
+            <Entry Placeholder="Ingrese teléfono"
+                   Keyboard="Telephone"></Entry>
+            <Label Text="Correo Electrónico"></Label>
+            <Entry Placeholder="Ingrese correo electrónico"
+                   Keyboard="Email"></Entry>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
