@@ -19,6 +19,12 @@ namespace ClientApp.Data
         {
             return database.Table<Client>().ToListAsync();
         }
+
+        internal Task<IList<Client>> GetClientsAsync()
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<Client> GetFriendAsync(int id)
         {
             return database.Table<Client>().Where(f => f.ID == id).FirstOrDefaultAsync();
