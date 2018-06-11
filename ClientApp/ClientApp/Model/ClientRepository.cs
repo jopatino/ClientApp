@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using ClientApp.Helpers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,6 +12,7 @@ namespace ClientApp.Model
     
     public class ClientRepository
     {
+        private IEnumerable<Grouping<string, Client>> sorted;
         #region Propiedades
         public IList<Client> Clients { get; set; }
         #endregion

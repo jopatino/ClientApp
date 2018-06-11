@@ -5,13 +5,16 @@
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Nombre"></Label>
-            <Entry Placeholder="{Binding ClientModel.Nombre, Mode=TwoWay}"></Entry>
+            <Entry Text="{Binding ClientModel.Nombre, Mode=TwoWay}"
+                   Placeholder="IngreseNombre"></Entry>
             <Label Text="Teléfono"></Label>
-            <Entry Placeholder="{Binding ClientModel.Telefono, Mode=TwoWay}"
-                   Keyboard="Telephone"></Entry>
+            <Entry Text="{Binding ClientModel.Telefono, Mode=TwoWay}"
+                   Keyboard="Telephone"
+                   Placeholder="(57) 333-333-333"></Entry>
             <Label Text="Correo Electrónico"></Label>
-            <Entry Placeholder="{Binding ClientModel.Correo, Mode=TwoWay}"
-                   Keyboard="Email"></Entry>
+            <Entry Text="{Binding ClientModel.Correo, Mode=TwoWay}"
+                   Keyboard="Email"
+                   Placeholder="Ingrese Email"></Entry>
             <StackLayout>
                 <Button Text="Guardar" HeightRequest="50" BackgroundColor="Green" TextColor="White" HorizontalOptions="FillAndExpand" Command="{Binding SaveCommand}" ></Button>
                 <Button Text="Eliminar" HeightRequest="50" BackgroundColor="Red" TextColor="White" HorizontalOptions="FillAndExpand" Command="{Binding DeleteCommand}" IsEnabled="{Binding IsEnabled}"></Button>

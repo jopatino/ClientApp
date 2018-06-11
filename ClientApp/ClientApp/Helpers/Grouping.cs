@@ -7,7 +7,7 @@ namespace ClientApp.Helpers
 {
     public class Grouping<K, T>: ObservableCollection<T>
     {
-        public K Key { get; set; }
+        public K Key { get; }
         public Grouping( K key, IEnumerable<T> items)
         {
             Key = key;

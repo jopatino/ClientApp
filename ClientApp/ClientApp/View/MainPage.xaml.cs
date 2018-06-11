@@ -13,5 +13,9 @@ namespace ClientApp.View
 		{
 			InitializeComponent();
 		}
-	}
+        protected override void OnAppearing()
+        {
+            this.BindingContext = new MainPageViewModel(Navigation);
+        }
+    }
 }

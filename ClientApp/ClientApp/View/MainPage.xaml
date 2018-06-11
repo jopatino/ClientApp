@@ -1,18 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:ClientApp"
+             xmlns:local="clr-namespace:ClientApp.Behaviors"
              x:Class="ClientApp.View.MainPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ItempedAttached x:Key="CommBeha"></local:ItempedAttached>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="+">
+        <ToolbarItem Text="+"
+                     Command="{Binding AddClientCommand}">
         </ToolbarItem>
     </ContentPage.ToolbarItems>
     <StackLayout>
-        <ListView Header="Contactos"
+        <SearchBar Text="{Binding Filter}"
+                   SearchCommand="{Binding SearchCommand}"
+                   Placeholder="Ingrese el Nombre">
+            
+        </SearchBar>
+        <ListView ItemsSource="{Binding Friends}"
+                  Header="Contactos"
                   Footer="Copyright, Todos los derechos reservados"
                   SeparatorColor="Blue"
                   HasUnevenRows="True"
-                  RowHeight="20">
+                  RowHeight="20"
+                  IsGroupingEnabled="True"
+                  GroupShortNameBinding="{Binding Key}"
+                  local:ItempedAttached.Command ="{Binding ItemTappedCommand}"
+                  SelectedItem="{Binding CurrentFriend}">
             <ListView.GroupHeaderTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -20,6 +36,7 @@
                                      Padding="10"
                                      BackgroundColor="Orange">
                             <Label
+                                Text="{Binding Key}"
                                 BackgroundColor="White"
                                 TextColor="Aqua"
                                 VerticalOptions="Center">
@@ -52,8 +69,8 @@
                                 <ColumnDefinition></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <Label Text="Nombre"></Label>
-                            <Label Text="Telefono"></Label>
+                            <Label Text="{Binding Nombre}"></Label>
+                            <Label Text="{Binding Telefono}"></Label>
                             <Image Source="call.png"></Image>
                         </Grid>
                     </ViewCell>
