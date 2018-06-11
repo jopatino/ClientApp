@@ -1,0 +1,44 @@
+﻿using ClientApp.Helpers;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ClientApp.Model
+{
+    
+    public class ClientRepository
+    {
+        #region Propiedades
+        public IList<Client> Clients { get; set; }
+        #endregion
+        public ClientRepository()
+        {
+            Task.Run(async() => Clients = await App.Database.GetClientsAsync()).Wait();
+        }
+
+        public IList<Client> GetAll()
+        {
+            return Clients;
+        }
+
+        public ObservableCollection<Grouping<string, Client>> GetAllGrouped()
+        {
+            if(Clients != null)
+            {
+                sorted =
+                from f in Clients
+                orderby f.Nombre
+                group f by f.Nombre[0].ToString()
+                into theGroup
+                select
+                new Grouping<string, Client>
+                (theGroup.Key, theGroup);
+            }
+            
+
+            return new ObservableCollection<Grouping<string, Client>>(sorted);
+        }
+    }
+}

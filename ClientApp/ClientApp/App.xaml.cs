@@ -1,4 +1,6 @@
-﻿using ClientApp.View;
+﻿using ClientApp.Data;
+using ClientApp.Services;
+using ClientApp.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,19 @@ namespace ClientApp
 {
 	public partial class App : Application
 	{
+        private static ClientDataBase database;
+
+        public static ClientDataBase Database
+        {
+            get
+            {
+                if(database == null)
+                {
+                    database = new ClientDatabase(DependencyService.Get<IFileHelper>().GetLocalFilePath("friendsdb.db3"));
+                }
+                return database;
+            }
+        }
 		public App ()
 		{
 			InitializeComponent();
