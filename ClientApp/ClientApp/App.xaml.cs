@@ -5,7 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using ClientApp.Data;
+using ClientApp.Services;
 using Xamarin.Forms;
 
 namespace ClientApp

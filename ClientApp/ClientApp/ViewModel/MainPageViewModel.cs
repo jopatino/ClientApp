@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace ClientApp.ViewModel
@@ -11,6 +12,8 @@ namespace ClientApp.ViewModel
     public class MainPageViewModel:Notificable
     {
         private ClientRepository clientRepository;
+
+        public ObservableCollection<Grouping<string, Client>> Clients { get; }
         public ObservableCollection<Grouping <string, Client>> Friends { get; set; }
         public Command AddClientCommand
         {
@@ -33,6 +36,44 @@ namespace ClientApp.ViewModel
             {
                 SetValue(ref filter, value);
             }
+        }
+        public Command ItemTappedCommand
+        {
+            get;
+            set;
+        }
+        private Client currentClient;
+        public Client CurrentClient
+        {
+            get
+            {
+                return currentClient;
+            }
+            set
+            {
+                SetValue(ref currentClient, value);
+            }
+        }
+        private INavigation Navigation;
+
+        public MainPageViewModel(INavigation navigation)
+        {
+            clientRepository = new ClientRepository();
+            Clients = clientRepository.GetAllGrouped();
+            Navigation = navigation;
+            AddClientCommand = new Command(async () => await AddClient());
+            SearchCommand = new Command(async () => await Search());
+            ItemTappedCommand = new Command(async () => await NavigateToEditClientView());
+
+        }
+        public async Task AddClient()
+        {
+            await Navigation.PushAsync(new ClientPage());
+
+        }
+        public async Task NavigateToEditClientView()
+        {
+            await Navigation.PushAsync(new ClientPage(CurrentClient));
         }
     }
 }
